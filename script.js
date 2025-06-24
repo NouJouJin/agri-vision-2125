@@ -54,18 +54,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const worksContainer = document.getElementById('works-container');
 
+    // ★★★ 以下を修正 ★★★
     // 作品データを元にHTMLカードを生成
-    worksData.forEach(work => {
+    worksData.forEach((work, index) => { // index を追加
         const card = document.createElement('div');
         card.className = 'work-card';
         card.dataset.videoId = work.videoId;
         
+        // HTML構造に No. と ツールチップ を追加
         card.innerHTML = `
             <div class="card-thumbnail">
+                <span class="work-number">No.${index + 1}</span>
                 <img src="https://i.ytimg.com/vi/${work.videoId}/hqdefault.jpg" alt="${work.title}">
                 <div class="play-icon"></div>
             </div>
             <div class="card-content">
+                <div class="tooltip">${work.description}</div>
                 <h3 class="card-title">${work.title}</h3>
                 <p class="card-creator">👤 ${work.creator}</p>
                 <p class="card-description">${work.description}</p>
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         worksContainer.appendChild(card);
     });
+    // ★★★ ここまでが修正箇所 ★★★
 
     // モーダル関連の要素を取得
     const modal = document.getElementById('modal');
