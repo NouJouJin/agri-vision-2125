@@ -172,9 +172,6 @@ body {
     margin-bottom: 0;
 }
 
-/* ★★★ 以下を新規追加・修正 ★★★ */
-
-/* エントリーNo.のスタイル */
 .work-number {
     position: absolute;
     top: 10px;
@@ -189,7 +186,6 @@ body {
     z-index: 5;
 }
 
-/* ホバー時の全文表示（ツールチップ）のスタイル */
 .tooltip {
     position: absolute;
     bottom: 110%; /* カードコンテンツの上部に表示 */
@@ -211,7 +207,6 @@ body {
     pointer-events: none; /* ツールチップ自体がマウスイベントを邪魔しないように */
 }
 
-/* 吹き出しの矢印 */
 .tooltip::after {
     content: '';
     position: absolute;
@@ -228,9 +223,6 @@ body {
     visibility: visible;
     transform: translateX(-50%) translateY(0); /* ホバー時に元の位置へ */
 }
-
-/* ★★★ ここまでが新規追加・修正箇所 ★★★ */
-
 
 /* --- Footer --- */
 .footer {
