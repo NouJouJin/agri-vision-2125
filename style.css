@@ -387,3 +387,26 @@ body {
     .header-btn { padding: 8px 15px; font-size: 0.9rem; }
     .logo-image { height: 30px; }
 }
+
+/* --- Footer Social Links --- */
+.footer .social-links {
+    margin-bottom: 20px;
+}
+
+.footer .social-links a {
+    display: inline-block;
+    margin: 0 15px;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.footer .social-links a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.footer .social-links img {
+    height: 30px; /* ロゴの高さを30pxに指定 */
+    width: auto;  /* 横幅は自動調整 */
+    vertical-align: middle;
+}
