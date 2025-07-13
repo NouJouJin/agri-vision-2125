@@ -16,17 +16,64 @@ body {
     line-height: 1.6;
 }
 
-/* --- Hero Section --- */
+/* ★★★ ここからが新規追加・修正箇所 ★★★ */
+/* --- Site Header --- */
+.site-header {
+    background-color: rgba(13, 27, 42, 0.9); /* --primary-color with transparency */
+    padding: 10px 40px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link .logo-image {
+    height: 40px;
+    vertical-align: middle;
+}
+
+.header-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.header-btn:hover {
+    background-color: #fff;
+    transform: scale(1.05);
+}
+
 .hero {
     background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 1)), url('https://source.unsplash.com/random/1600x900/?future,farm') no-repeat center center/cover;
+    /* ヘッダー分、高さを少し調整する場合（任意） */
+    /* height: calc(60vh - 62px);  */
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    border-bottom: 3px solid var(--accent-color);
+    /* ヘッダーの下になるように調整（不要なら削除） */
+    /* position: relative; */
 }
+/* ★★★ ここまでが新規追加・修正箇所 ★★★ */
+
 
 .hero-content {
     max-width: 800px;
@@ -224,21 +271,60 @@ body {
     transform: translateX(-50%) translateY(0); /* ホバー時に元の位置へ */
 }
 
-/* --- Old Footer (Kept for reference, can be deleted) --- */
-/*
+/* ★★★ ここからが新規追加応募セクションのスタイル ★★★ */
+.apply-section {
+    background-color: var(--secondary-color);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.apply-container h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.apply-container p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.apply-btn {
+    display: inline-block;
+    background-image: linear-gradient(45deg, var(--accent-color) 0%, #48bfe3 100%);
+    color: var(--primary-color);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 245, 212, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 245, 212, 0.6);
+}
+/* ★★★ ここまでが新規追加応募セクションのスタイル ★★★ */
+
+
+/* --- Footer --- */
 .footer {
     text-align: center;
     padding: 30px 20px;
     background-color: var(--secondary-color);
-    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-*/
 
 /* --- Modal --- */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1001; /* ヘッダーより手前に表示 */
     left: 0;
     top: 0;
     width: 100%;
@@ -297,65 +383,7 @@ body {
     .main-title { font-size: 2.5rem; }
     .subtitle { font-size: 1.2rem; }
     .hero { height: 50vh; }
-}
-
-/* ★★★ 新しいフッター用のスタイル ★★★ */
-.new-footer {
-    padding: 48px 0;
-    text-align: center;
-    color: #94a3b8; /* text-slate-400 */
-    background-color: #121822;
-}
-
-.footer-container {
-    max-width: 896px; /* max-w-4xl */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-.footer-logo {
-    margin-bottom: 24px; /* mb-6 */
-}
-
-.logo-link {
-    display: inline-block;
-    transition: opacity 0.3s;
-}
-
-.logo-link:hover {
-    opacity: 0.8;
-}
-
-.logo-image {
-    height: 40px; /* h-10 */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 24px; /* space-x-6 の代替 */
-    margin-bottom: 32px; /* mb-8 */
-}
-
-.social-icon {
-    color: #94a3b8;
-    transition: color 0.3s;
-}
-
-.social-icon:hover {
-    color: #fff; /* hover:text-white */
-}
-
-.social-icon svg {
-    width: 24px; /* w-6 */
-    height: 24px; /* h-6 */
-}
-
-.copyright {
-    font-size: 14px; /* text-sm */
-    margin: 0;
+    .site-header { padding: 10px 20px; }
+    .header-btn { padding: 8px 15px; font-size: 0.9rem; }
+    .logo-image { height: 30px; }
 }
