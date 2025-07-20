@@ -97,15 +97,19 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">×</span>
-            <div class="video-container" id="video-container">
-                <!-- YouTube動画がここに埋め込まれます -->
+            <!-- ★★★ ここを修正 ★★★ -->
+            <div id="modal-player-container">
+                <!-- YouTubeまたはTikTokのプレイヤーがここに挿入されます -->
             </div>
         </div>
     </div>
 
+    <!-- TikTok埋め込み用の公式スクリプト -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
     <script src="script.js"></script>
 
-    <!-- ★★★ 構造化データ（JSON-LD）を最適化 ★★★ -->
+    <!-- JSON-LD ... -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -114,19 +118,19 @@
       "startDate": "2025-05-26",
       "endDate": "2025-07-20",
       "description": "AIが描く100年後の日本農業をテーマにした動画コンテスト。最新の動画生成AIを駆使し、クリエイターたちが創造する未来の農業ビジョンをご覧ください。",
-      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "eventAttendanceMode": "https://schema.org/OnlineEvent",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "VirtualLocation",
         "url": "https://noujoujin.github.io/agri-vision-2125/"
       },
       "image": [
-        "https://metagri-labo.com/wp-content/uploads/2025/05/38db55c773ad7f609677d52117bcd494.jpg"
+        "http://metagri-labo.com/wp-content/uploads/2025/05/38db55c773ad7f609677d52117bcd494.jpg"
        ],
       "organizer": {
         "@type": "Organization",
         "name": "Metagri研究所",
-        "url": "https://metagri-labo.com/"
+        "url": "http://metagri-labo.com/"
       }
     }
     </script>
