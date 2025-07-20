@@ -175,13 +175,12 @@ document.addEventListener('DOMContentLoaded', function() {
             videoId: "Q_XK2sjHAZI"
         },
         // ★★★ ここを修正 ★★★
-           {
+            {
             creator: "茶々 さん",
             title: "チャットする土",
             description: "本作は、100年後の農業において「土と会話ができる」という未来像を、リアルな圃場管理の視点から描いたショートムービーです。...",
             platform: 'tiktok',
             url: 'https://www.tiktok.com/t/ZSBchTP5g/',
-            videoId: 'ZSBchTP5g',
             thumbnail: 'http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png'
         },
         {
@@ -229,37 +228,15 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', () => {
             const index = card.dataset.index;
             const work = worksData[index];
-            
-            // ★★★ ここからが修正箇所 ★★★
-            // まずはモーダルの中身を空にして表示する
-            modalPlayerContainer.innerHTML = '';
-            modal.style.display = 'block';
 
             if (work.platform === 'tiktok') {
-                // TikTokの埋め込みコードを生成
-                const tiktokEmbedHtml = `
-                    <blockquote class="tiktok-embed" cite="${work.url}" data-video-id="${work.videoId}" style="max-width: 480px; min-width: 325px; margin: 0 auto;">
-                        <section></section>
-                    </blockquote>
-                `;
-                modalPlayerContainer.innerHTML = tiktokEmbedHtml;
-
-                // 外部APIを叩いてTikTokの埋め込みスクリプトを動的に読み込み、実行する
-                // これにより、動的に追加された要素でも確実にレンダリングされる
-                if (document.getElementById('tiktok-embed-script')) {
-                    document.getElementById('tiktok-embed-script').remove();
-                }
-                const script = document.createElement('script');
-                script.id = 'tiktok-embed-script';
-                script.async = true;
-                script.src = 'https://www.tiktok.com/embed.js';
-                document.body.appendChild(script);
-
-            } else { // YouTubeの場合
-                // YouTubeの埋め込みコードを生成
+                // TikTokの場合は新しいタブで開く
+                window.open(work.url, '_blank');
+            } else { 
+                // YouTubeの場合はモーダルで再生
                 modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${work.videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+                modal.style.display = 'block';
             }
-             // ★★★ ここまでが修正箇所 ★★★
         });
     });
 
@@ -289,3 +266,4 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+
