@@ -42,10 +42,10 @@
             <a href="https://metagri-labo.com/" target="_blank" class="logo-link">
                 <img src="http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png" alt="Metagri研究所 ロゴ" class="logo-image">
             </a>
-            <a href="#apply" class="header-btn">作品を投稿する</a>
+            <!-- ★★★ ボタンを「投票する」に変更 ★★★ -->
+            <a href="#vote" class="header-btn">作品に投票する</a>
         </div>
     </header>
-    <!-- ★★★ ここまでが新規追加ヘッダー ★★★ -->
 
     <header class="hero">
         <div class="hero-content">
@@ -63,15 +63,23 @@
             </div>
         </section>
 
-         <!-- ★★★ ここからが新規追加応募セクション ★★★ -->
-        <section id="apply" class="apply-section">
-            <div class="apply-container">
-                <h2>あなたのビジョンを、世界へ。</h2>
-                <p>未来の農業を描く、あなたの創造力をお待ちしています。<br>下のボタンから作品を投稿して、コンテストに参加しよう！</p>
-                <a href="https://airtable.com/applcqOMmwyE9fjtX/shrUmEZvmsMhgsnvL" target="_blank" class="apply-btn">今すぐ作品を投稿する</a>
+       <!-- ★★★ 応募セクションを投票セクションに差し替え ★★★ -->
+        <section id="vote" class="vote-section">
+            <div class="vote-container">
+                <h2>未来へ、一票を。</h2>
+                <p>心に残った、未来の農業ビジョンはどれでしたか？<br>あなたの投票が、次の100年を創るクリエイターを応援します。</p>
+                <div class="vote-form-wrapper">
+                    <iframe class="airtable-embed" src="https://airtable.com/embed/applcqOMmwyE9fjtX/pag4I4C0JHYg0N3HY/form" frameborder="0" onmousewheel="" width="100%" height="950" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                </div>
+             <!-- ★★★ ここからが新規追加箇所 ★★★ -->
+        <div class="vote-link-wrapper">
+            <p>もし上のフォームが表示されない場合は、<br class="sp-only">以下のボタンから投票ページに直接アクセスしてください。</p>
+            <a href="https://airtable.com/applcqOMmwyE9fjtX/pag4I4C0JHYg0N3HY/form" target="_blank" class="vote-link-btn">投票ページへ移動</a>
+        </div>
+        <!-- ★★★ ここまでが新規追加箇所 ★★★ -->
             </div>
         </section>
-        <!-- ★★★ ここまでが新規追加応募セクション ★★★ -->
+        
     </main>
 
     <footer class="new-footer">
