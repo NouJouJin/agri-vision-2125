@@ -18,7 +18,7 @@ body {
 
 /* --- Site Header --- */
 .site-header {
-    background-color: rgba(13, 27, 42, 0.9); /* --primary-color with transparency */
+    background-color: rgba(13, 27, 42, 0.9);
     padding: 10px 40px;
     position: sticky;
     top: 0;
@@ -266,24 +266,21 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
-/* ★★★ ここからが新規追加のTikTok用スタイル ★★★ */
+/* --- TikTok Card Style --- */
 .tiktok-thumbnail {
-    object-fit: contain !important; /* ロゴが潰れないように調整 */
+    object-fit: contain !important;
     padding: 20px;
     box-sizing: border-box;
     background-color: #000;
 }
 
 .tiktok-play-icon::after {
-    /* YouTubeアイコンとは違う、シンプルな再生マークに変更 */
     content: '▶';
     font-size: 20px;
     color: #fff;
     border: none !important;
     margin: 0 0 0 2px;
 }
-/* ★★★ ここまでが新規追加のTikTok用スタイル ★★★ */
-
 
 /* --- Apply Section --- */
 .apply-section {
@@ -324,7 +321,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 245, 212, 0.6);
 }
 
-/* --- Footer (修正済み・最終版) --- */
+/* --- Footer --- */
 .new-footer {
     text-align: center;
     padding: 40px 20px;
@@ -351,33 +348,103 @@ body {
 
 .new-footer .social-links {
     margin-bottom: 20px;
-    display: flex; /* アイコンを横並びにする */
-    gap: 25px;    /* アイコン間のスペース */
+    display: flex;
+    gap: 25px;
 }
 
 .new-footer .social-links a {
-    color: var(--text-color); /* アイコンの色を指定 */
+    color: var(--text-color);
     opacity: 0.8;
     transition: opacity 0.3s, transform 0.3s, color 0.3s;
-    display: inline-block; /* リンクの領域を確保 */
+    display: inline-block;
 }
 
 .new-footer .social-links a:hover {
     opacity: 1;
     transform: scale(1.1);
-    color: var(--accent-color); /* ホバー時にアクセントカラーに */
+    color: var(--accent-color);
 }
 
-/* ★★★★★ 最も重要な修正箇所 ★★★★★ */
-/* SVGアイコン自体にサイズを指定して表示させる */
 .new-footer .social-links svg {
     width: 30px;
     height: 30px;
-    fill: currentColor; /* aタグのcolorを継承して色を反映 */
+    fill: currentColor;
 }
-/* ★★★★★ ここまで ★★★★★ */
 
 .new-footer .copyright {
     font-size: 0.9rem;
     color: rgba(224, 225, 221, 0.7);
+}
+
+
+/* ★★★★★ ここからが「音しか流れない」問題を解決するコードです ★★★★★ */
+/* --- Modal & Video Player --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 960px;
+}
+
+.close-button {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* ★★★ この video-container の部分が最も重要です ★★★ */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 のアスペクト比を維持 */
+    height: 0;
+    overflow: hidden;
+    background-color: #000; /* 読み込み中に黒背景を表示 */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .site-header { padding: 10px 20px; }
+    .header-btn { padding: 8px 15px; font-size: 0.9rem; }
+    .logo-image { height: 30px; }
+    .main-title { font-size: 2.5rem; }
+    .subtitle { font-size: 1.2rem; }
+    .hero { height: 50vh; }
 }
