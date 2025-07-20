@@ -180,8 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "チャットする土",
             description: "本作は、100年後の農業において「土と会話ができる」という未来像を、リアルな圃場管理の視点から描いたショートムービーです。...",
             platform: 'tiktok',
-            url: 'https://www.tiktok.com/@chachagri/video/7393433850785025287',
-            videoId: '7393433850785025287',
+            url: 'https://www.tiktok.com/t/ZSBchTP5g/',
+            videoId: 'ZSBchTP5g',
             thumbnail: 'http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png'
         },
         {
