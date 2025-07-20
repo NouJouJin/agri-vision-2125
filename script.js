@@ -175,13 +175,13 @@ document.addEventListener('DOMContentLoaded', function() {
             videoId: "Q_XK2sjHAZI"
         },
         // ★★★ ここを修正 ★★★
-        {
+           {
             creator: "茶々 さん",
             title: "チャットする土",
             description: "本作は、100年後の農業において「土と会話ができる」という未来像を、リアルな圃場管理の視点から描いたショートムービーです。...",
-            platform: 'tiktok', // TikTok用の目印
-            url: 'https://www.tiktok.com/t/ZSBchTP5g/', // TikTokのURL
-            videoId: '7393433850785025287', // 動画ID
+            platform: 'tiktok',
+            url: 'https://www.tiktok.com/@chachagri/video/7393433850785025287',
+            videoId: '7393433850785025287',
             thumbnail: 'http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png'
         },
         {
@@ -193,13 +193,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // ★★★ ここまでが新規追加作品 ★★★
     ];
 
-   const worksContainer = document.getElementById('works-container');
+ const worksContainer = document.getElementById('works-container');
 
-    // 作品データを元にHTMLカードを生成
     worksData.forEach((work, index) => { 
         const card = document.createElement('div');
         card.className = 'work-card';
-        card.dataset.index = index; // インデックス番号をデータとして保持
+        card.dataset.index = index;
         
         const thumbnailSrc = work.platform === 'tiktok' ? work.thumbnail : `https://i.ytimg.com/vi/${work.videoId}/hqdefault.jpg`;
         const playIconClass = work.platform === 'tiktok' ? 'play-icon tiktok-play-icon' : 'play-icon';
@@ -230,25 +229,37 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', () => {
             const index = card.dataset.index;
             const work = worksData[index];
+            
+            // ★★★ ここからが修正箇所 ★★★
+            // まずはモーダルの中身を空にして表示する
+            modalPlayerContainer.innerHTML = '';
+            modal.style.display = 'block';
 
             if (work.platform === 'tiktok') {
                 // TikTokの埋め込みコードを生成
-                modalPlayerContainer.innerHTML = `
-                    <blockquote class="tiktok-embed" cite="${work.url}" data-video-id="${work.videoId}" style="max-width: 605px; min-width: 325px; margin: 0 auto;">
+                const tiktokEmbedHtml = `
+                    <blockquote class="tiktok-embed" cite="${work.url}" data-video-id="${work.videoId}" style="max-width: 480px; min-width: 325px; margin: 0 auto;">
                         <section></section>
                     </blockquote>
                 `;
-                // TikTokのスクリプトを再実行して埋め込みをレンダリング
-                if (window.tiktok) {
-                    window.tiktok.load();
+                modalPlayerContainer.innerHTML = tiktokEmbedHtml;
+
+                // 外部APIを叩いてTikTokの埋め込みスクリプトを動的に読み込み、実行する
+                // これにより、動的に追加された要素でも確実にレンダリングされる
+                if (document.getElementById('tiktok-embed-script')) {
+                    document.getElementById('tiktok-embed-script').remove();
                 }
-                modal.style.display = 'block';
+                const script = document.createElement('script');
+                script.id = 'tiktok-embed-script';
+                script.async = true;
+                script.src = 'https://www.tiktok.com/embed.js';
+                document.body.appendChild(script);
 
             } else { // YouTubeの場合
                 // YouTubeの埋め込みコードを生成
                 modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${work.videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-                modal.style.display = 'block';
             }
+             // ★★★ ここまでが修正箇所 ★★★
         });
     });
 
