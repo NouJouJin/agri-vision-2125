@@ -282,45 +282,34 @@ body {
     margin: 0 0 0 2px;
 }
 
-/* --- Apply Section --- */
-.apply-section {
+/* ★★★ 応募セクションを投票セクションのスタイルに差し替え ★★★ */
+.vote-section {
     background-color: var(--secondary-color);
     padding: 80px 20px;
     text-align: center;
 }
 
-.apply-container h2 {
+.vote-container h2 {
     font-family: var(--font-title);
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 20px;
 }
 
-.apply-container p {
+.vote-container p {
     font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto 40px;
     line-height: 1.8;
 }
 
-.apply-btn {
-    display: inline-block;
-    background-image: linear-gradient(45deg, var(--accent-color) 0%, #48bfe3 100%);
-    color: var(--primary-color);
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 20px rgba(0, 245, 212, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.vote-form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden; /* iframeの角を丸くするため */
 }
-
-.apply-btn:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 245, 212, 0.6);
-}
-
 /* --- Footer --- */
 .new-footer {
     text-align: center;
@@ -466,4 +455,48 @@ body {
     opacity: 1;
     color: var(--accent-color);
     text-decoration: underline;
+}
+
+/* --- Vote Section Alt Link --- */
+.vote-link-wrapper {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vote-link-wrapper p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.vote-link-btn {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.vote-link-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.sp-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sp-only {
+        display: block; /* スマホ表示の時だけ改行を有効に */
+    }
 }
