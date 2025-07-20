@@ -16,7 +16,6 @@ body {
     line-height: 1.6;
 }
 
-/* ★★★ ここからが新規追加・修正箇所 ★★★ */
 /* --- Site Header --- */
 .site-header {
     background-color: rgba(13, 27, 42, 0.9); /* --primary-color with transparency */
@@ -59,21 +58,16 @@ body {
     transform: scale(1.05);
 }
 
+/* --- Hero Section --- */
 .hero {
     background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 1)), url('https://source.unsplash.com/random/1600x900/?future,farm') no-repeat center center/cover;
-    /* ヘッダー分、高さを少し調整する場合（任意） */
-    /* height: calc(60vh - 62px);  */
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    /* ヘッダーの下になるように調整（不要なら削除） */
-    /* position: relative; */
 }
-/* ★★★ ここまでが新規追加・修正箇所 ★★★ */
-
 
 .hero-content {
     max-width: 800px;
@@ -119,6 +113,7 @@ body {
     gap: 30px;
 }
 
+/* --- Work Card (Common Style) --- */
 .work-card {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -127,8 +122,8 @@ body {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    position: relative; /* 内部の絶対配置要素の基準点にする */
-    overflow: hidden; /* 角丸を維持 */
+    position: relative;
+    overflow: hidden;
 }
 
 .work-card.is-visible {
@@ -139,16 +134,16 @@ body {
 .work-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 30px rgba(0, 245, 212, 0.3);
-    z-index: 10; /* ホバー時に他のカードより手前に表示 */
-    overflow: visible; /* ツールチップがはみ出て表示されるように */
+    z-index: 10;
+    overflow: visible;
 }
 
 .card-thumbnail {
     position: relative;
     width: 100%;
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    border-radius: 10px 10px 0 0; /* 画像の角を丸める */
-    overflow: hidden; /* 画像を角丸にクリップ */
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
 }
 
 .card-thumbnail img {
@@ -192,7 +187,7 @@ body {
 
 .card-content {
     padding: 20px;
-    position: relative; /* ツールチップの基準点 */
+    position: relative;
 }
 
 .card-title {
@@ -235,9 +230,9 @@ body {
 
 .tooltip {
     position: absolute;
-    bottom: 110%; /* カードコンテンツの上部に表示 */
+    bottom: 110%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px); /* 初期位置を少し下げる */
+    transform: translateX(-50%) translateY(10px);
     background-color: #2c3e50;
     color: #fff;
     padding: 15px;
@@ -251,7 +246,7 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 20;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    pointer-events: none; /* ツールチップ自体がマウスイベントを邪魔しないように */
+    pointer-events: none;
 }
 
 .tooltip::after {
@@ -268,10 +263,29 @@ body {
 .work-card:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0); /* ホバー時に元の位置へ */
+    transform: translateX(-50%) translateY(0);
 }
 
-/* ★★★ ここからが新規追加応募セクションのスタイル ★★★ */
+/* ★★★ ここからが新規追加のTikTok用スタイル ★★★ */
+.tiktok-thumbnail {
+    object-fit: contain !important; /* ロゴが潰れないように調整 */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #000;
+}
+
+.tiktok-play-icon::after {
+    /* YouTubeアイコンとは違う、シンプルな再生マークに変更 */
+    content: '▶';
+    font-size: 20px;
+    color: #fff;
+    border: none !important;
+    margin: 0 0 0 2px;
+}
+/* ★★★ ここまでが新規追加のTikTok用スタイル ★★★ */
+
+
+/* --- Apply Section --- */
 .apply-section {
     background-color: var(--secondary-color);
     padding: 80px 20px;
@@ -309,104 +323,19 @@ body {
     transform: scale(1.1) translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 245, 212, 0.6);
 }
-/* ★★★ ここまでが新規追加応募セクションのスタイル ★★★ */
 
-
-/* --- Footer --- */
-.footer {
+/* --- Footer (修正済み) --- */
+.new-footer {
     text-align: center;
-    padding: 30px 20px;
-    background-color: var(--secondary-color);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    background-color: var(--primary-color);
+    border-top: 1px solid rgba(0, 245, 212, 0.2);
 }
 
-/* --- Modal --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1001; /* ヘッダーより手前に表示 */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    animation: fadeIn 0.3s;
-}
-
-.modal-content {
-    position: relative;
-    margin: 5% auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 960px;
-}
-
-.close-button {
-    position: absolute;
-    top: -10px;
-    right: 5px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .main-title { font-size: 2.5rem; }
-    .subtitle { font-size: 1.2rem; }
-    .hero { height: 50vh; }
-    .site-header { padding: 10px 20px; }
-    .header-btn { padding: 8px 15px; font-size: 0.9rem; }
-    .logo-image { height: 30px; }
-}
-
-/* --- Footer Social Links --- */
-.footer .social-links {
-    margin-bottom: 20px;
-}
-
-.footer .social-links a {
-    display: inline-block;
-    margin: 0 15px;
-    opacity: 0.8;
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-.footer .social-links a:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.footer .social-links img {
-    height: 30px; /* ロゴの高さを30pxに指定 */
-    width: auto;  /* 横幅は自動調整 */
-    vertical-align: middle;
+.new-footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
