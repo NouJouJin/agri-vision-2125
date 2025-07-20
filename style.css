@@ -448,3 +448,22 @@ body {
     .subtitle { font-size: 1.2rem; }
     .hero { height: 50vh; }
 }
+
+/* --- Footer Links --- */
+.new-footer .footer-links {
+    margin-bottom: 20px;
+}
+
+.new-footer .footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.new-footer .footer-links a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+    text-decoration: underline;
+}
