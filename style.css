@@ -324,7 +324,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 245, 212, 0.6);
 }
 
-/* --- Footer (修正済み) --- */
+/* --- Footer (修正済み・最終版) --- */
 .new-footer {
     text-align: center;
     padding: 40px 20px;
@@ -338,4 +338,46 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.new-footer .footer-logo {
+    margin-bottom: 20px;
+}
+
+.new-footer .footer-logo .logo-image {
+    height: 40px;
+    opacity: 0.9;
+}
+
+.new-footer .social-links {
+    margin-bottom: 20px;
+    display: flex; /* アイコンを横並びにする */
+    gap: 25px;    /* アイコン間のスペース */
+}
+
+.new-footer .social-links a {
+    color: var(--text-color); /* アイコンの色を指定 */
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s, color 0.3s;
+    display: inline-block; /* リンクの領域を確保 */
+}
+
+.new-footer .social-links a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: var(--accent-color); /* ホバー時にアクセントカラーに */
+}
+
+/* ★★★★★ 最も重要な修正箇所 ★★★★★ */
+/* SVGアイコン自体にサイズを指定して表示させる */
+.new-footer .social-links svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor; /* aタグのcolorを継承して色を反映 */
+}
+/* ★★★★★ ここまで ★★★★★ */
+
+.new-footer .copyright {
+    font-size: 0.9rem;
+    color: rgba(224, 225, 221, 0.7);
 }
