@@ -192,17 +192,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // ★★★ ここまでが新規追加作品 ★★★
     ];
 
-    const worksContainer = document.getElementById('works-container');
+  const worksContainer = document.getElementById('works-container');
 
     // 作品データを元にHTMLカードを生成
     worksData.forEach((work, index) => { 
         const card = document.createElement('div');
         card.className = 'work-card';
         
-        // --- 修正箇所 ---
-        // 作品データに応じてカードの内容とイベントを設定
         if (work.platform === 'tiktok') {
-            // TikTok作品の場合
             card.dataset.url = work.url;
             card.innerHTML = `
                 <div class="card-thumbnail">
@@ -218,7 +215,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         } else {
-            // YouTube作品の場合 (これまで通り)
             card.dataset.videoId = work.videoId;
             card.innerHTML = `
                 <div class="card-thumbnail">
@@ -237,54 +233,34 @@ document.addEventListener('DOMContentLoaded', function() {
         worksContainer.appendChild(card);
     });
 
-    // モーダル関連の要素を取得
+    // --- ★★★ ここからが修正箇所 ★★★ ---
     const modal = document.getElementById('modal');
-    const videoContainer = document.getElementById('video-container');
+    // videoContainerではなく、元のID `modal-player-container` を使用
+    const modalPlayerContainer = document.getElementById('modal-player-container');
     const closeButton = document.querySelector('.close-button');
     const allCards = document.querySelectorAll('.work-card');
 
-    // カードクリック時のイベントを設定
     allCards.forEach(card => {
         card.addEventListener('click', () => {
-            const platform = card.dataset.platform;
-            
-            if (platform === 'tiktok') {
-                const tiktokUrl = card.dataset.url;
-                // TikTokの埋め込みコードを生成
-                const blockquote = document.createElement('blockquote');
-                blockquote.className = 'tiktok-embed';
-                blockquote.cite = tiktokUrl;
-                blockquote.setAttribute('data-video-id', tiktokUrl.split('/video/')[1].split('?')[0]);
-                blockquote.style.maxWidth = '605px';
-                blockquote.style.minWidth = '325px';
-                
-                const section = document.createElement('section');
-                blockquote.appendChild(section);
-
-                modalPlayerContainer.innerHTML = ''; // 中身をクリア
-                modalPlayerContainer.appendChild(blockquote);
-                
-                // TikTokのスクリプトを再実行して埋め込みをレンダリング
-                if (window.tiktok) {
-                    window.tiktok.load();
-                }
-
-                modal.style.display = 'block';
-
-            } else if (platform === 'youtube') {
+            if (card.dataset.url) {
+                // TikTokのURLがある場合は新しいタブで開く (シンプルで確実な方法)
+                window.open(card.dataset.url, '_blank');
+            } else if (card.dataset.videoId) {
+                // YouTubeのVideoIDがある場合はモーダルを開く
                 const videoId = card.dataset.videoId;
-                // YouTubeの埋め込みコードを生成
-                modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+                // `modal-player-container` の中身をYouTubeのiframeに書き換える
+                modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
                 modal.style.display = 'block';
             }
         });
     });
 
-    // モーダルを閉じる処理
     function closeModal() {
         modal.style.display = 'none';
-        modalPlayerContainer.innerHTML = ''; // プレイヤーをクリア
+        // `modal-player-container` の中身を空にする
+        modalPlayerContainer.innerHTML = '';
     }
+    // --- ★★★ ここまでが修正箇所 ★★★ ---
 
     closeButton.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
@@ -293,7 +269,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // スクロールアニメーション (変更なし)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -303,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, {
         threshold: 0.1
     });
+
     allCards.forEach(card => {
         observer.observe(card);
     });
