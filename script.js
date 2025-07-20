@@ -180,7 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "チャットする土",
             description: "本作は、100年後の農業において「土と会話ができる」という未来像を、リアルな圃場管理の視点から描いたショートムービーです。...",
             platform: 'tiktok', // TikTok用の目印
-            url: 'https://www.tiktok.com/@chachagri/video/7393433850785025287', // TikTokの動画IDを含むURL
+            url: 'https://www.tiktok.com/t/ZSBchTP5g/', // TikTokのURL
+            videoId: '7393433850785025287', // 動画ID
             thumbnail: 'http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png'
         },
         {
@@ -192,64 +193,60 @@ document.addEventListener('DOMContentLoaded', function() {
         // ★★★ ここまでが新規追加作品 ★★★
     ];
 
-  const worksContainer = document.getElementById('works-container');
+   const worksContainer = document.getElementById('works-container');
 
     // 作品データを元にHTMLカードを生成
     worksData.forEach((work, index) => { 
         const card = document.createElement('div');
         card.className = 'work-card';
+        card.dataset.index = index; // インデックス番号をデータとして保持
         
-        if (work.platform === 'tiktok') {
-            card.dataset.url = work.url;
-            card.innerHTML = `
-                <div class="card-thumbnail">
-                    <span class="work-number">No.${index + 1}</span>
-                    <img src="${work.thumbnail}" alt="${work.title}" class="tiktok-thumbnail">
-                    <div class="play-icon tiktok-play-icon"></div>
-                </div>
-                <div class="card-content">
-                    <div class="tooltip">${work.description}</div>
-                    <h3 class="card-title">${work.title}</h3>
-                    <p class="card-creator">👤 ${work.creator}</p>
-                    <p class="card-description">${work.description}</p>
-                </div>
-            `;
-        } else {
-            card.dataset.videoId = work.videoId;
-            card.innerHTML = `
-                <div class="card-thumbnail">
-                    <span class="work-number">No.${index + 1}</span>
-                    <img src="https://i.ytimg.com/vi/${work.videoId}/hqdefault.jpg" alt="${work.title}">
-                    <div class="play-icon"></div>
-                </div>
-                <div class="card-content">
-                    <div class="tooltip">${work.description}</div>
-                    <h3 class="card-title">${work.title}</h3>
-                    <p class="card-creator">👤 ${work.creator}</p>
-                    <p class="card-description">${work.description}</p>
-                </div>
-            `;
-        }
+        const thumbnailSrc = work.platform === 'tiktok' ? work.thumbnail : `https://i.ytimg.com/vi/${work.videoId}/hqdefault.jpg`;
+        const playIconClass = work.platform === 'tiktok' ? 'play-icon tiktok-play-icon' : 'play-icon';
+        const thumbnailClass = work.platform === 'tiktok' ? 'tiktok-thumbnail' : '';
+
+        card.innerHTML = `
+            <div class="card-thumbnail">
+                <span class="work-number">No.${index + 1}</span>
+                <img src="${thumbnailSrc}" alt="${work.title}" class="${thumbnailClass}">
+                <div class="${playIconClass}"></div>
+            </div>
+            <div class="card-content">
+                <div class="tooltip">${work.description}</div>
+                <h3 class="card-title">${work.title}</h3>
+                <p class="card-creator">👤 ${work.creator}</p>
+                <p class="card-description">${work.description}</p>
+            </div>
+        `;
         worksContainer.appendChild(card);
     });
 
-    // --- ★★★ ここからが修正箇所 ★★★ ---
     const modal = document.getElementById('modal');
-    // videoContainerではなく、元のID `modal-player-container` を使用
     const modalPlayerContainer = document.getElementById('modal-player-container');
     const closeButton = document.querySelector('.close-button');
     const allCards = document.querySelectorAll('.work-card');
 
     allCards.forEach(card => {
         card.addEventListener('click', () => {
-            if (card.dataset.url) {
-                // TikTokのURLがある場合は新しいタブで開く (シンプルで確実な方法)
-                window.open(card.dataset.url, '_blank');
-            } else if (card.dataset.videoId) {
-                // YouTubeのVideoIDがある場合はモーダルを開く
-                const videoId = card.dataset.videoId;
-                // `modal-player-container` の中身をYouTubeのiframeに書き換える
-                modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+            const index = card.dataset.index;
+            const work = worksData[index];
+
+            if (work.platform === 'tiktok') {
+                // TikTokの埋め込みコードを生成
+                modalPlayerContainer.innerHTML = `
+                    <blockquote class="tiktok-embed" cite="${work.url}" data-video-id="${work.videoId}" style="max-width: 605px; min-width: 325px; margin: 0 auto;">
+                        <section></section>
+                    </blockquote>
+                `;
+                // TikTokのスクリプトを再実行して埋め込みをレンダリング
+                if (window.tiktok) {
+                    window.tiktok.load();
+                }
+                modal.style.display = 'block';
+
+            } else { // YouTubeの場合
+                // YouTubeの埋め込みコードを生成
+                modalPlayerContainer.innerHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${work.videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
                 modal.style.display = 'block';
             }
         });
@@ -257,10 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function closeModal() {
         modal.style.display = 'none';
-        // `modal-player-container` の中身を空にする
         modalPlayerContainer.innerHTML = '';
     }
-    // --- ★★★ ここまでが修正箇所 ★★★ ---
 
     closeButton.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
