@@ -578,3 +578,31 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* --- Hero Section Button & Text Responsive Fix --- */
+@media (max-width: 768px) {
+    /* ヒーローエリア内のテキストやボタンの上下マージンを調整 */
+    .hero-content .main-title,
+    .hero-content .subtitle,
+    .hero-guide,
+    .hero-vote-btn {
+        margin-bottom: 25px; /* 各要素の下にスペースを確保 */
+    }
+
+    /* ヒーローエリア全体の高さを自動調整 */
+    .hero {
+        height: auto; /* 高さを自動に */
+        min-height: 70vh; /* 最低限の高さを確保 */
+        padding: 40px 20px; /* 上下の余白を調整 */
+    }
+}
+
+@media (max-width: 480px) {
+    /* さらに画面が狭いスマホ向けの調整 */
+    .main-title {
+        font-size: 2rem; /* タイトルを少し小さく */
+    }
+    .subtitle {
+        font-size: 1.5rem; /* サブタイトルを少し小さく */
+    }
+}
