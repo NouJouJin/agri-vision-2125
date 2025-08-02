@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGRI VISION 2125 - 最終決戦投票</title>
-    <!-- ★★★ 読み込むCSSとJSのパスを現在のフォルダに合わせて変更 ★★★ -->
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <!-- Opening Animationは変更なし -->
     <div class="opening-animation">
         <h1 class="opening-title">THE FINAL STAGE</h1>
     </div>
@@ -23,6 +22,7 @@
     </header>
 
     <main class="main-content">
+        <!-- Hero Sectionは変更なし -->
         <div class="hero-section">
             <h2 class="main-title">AGRI VISION 2125</h2>
             <p class="subtitle">FINAL VOTE</p>
@@ -32,23 +32,28 @@
             </p>
         </div>
 
+        <!-- ★★★ 作品表示エリアを横スクロール型に変更 ★★★ -->
         <section class="finalists-section">
-            <div class="card-carousel">
-                <div class="card-container" id="card-container">
+            <div class="carousel-wrapper">
+                <div class="card-carousel" id="card-carousel">
                     <!-- finalist cards will be inserted here by script.js -->
                 </div>
             </div>
-            <div class="instruction-text">気になる作品にカーソルを合わせるか、タップしてください</div>
+            <div class="carousel-nav">
+                <button id="prev-btn">‹</button>
+                <button id="next-btn">›</button>
+            </div>
         </section>
 
+        <!-- ★★★ 投票セクションの文言とリンクを修正 ★★★ -->
         <section class="vote-section">
-            <h2>投票はこちら</h2>
-            <p>Discordコミュニティ内の、ホルダー限定チャンネルにて最終投票を実施しています。<br>下のボタンから投票所へ移動し、グランプリにふさわしいと思う1作品にリアクションしてください。</p>
-            <a href="[Discordのホルダー投票所へのリンク]" target="_blank" class="vote-btn">Discordの #ホルダー投票所 へ</a>
+            <h2>NFTホルダー限定 - 最終投票</h2>
+            <p>最終投票は、Metagri研究所の公式Discordコミュニティ内、<strong>NFTホルダー限定</strong>のプライベートチャンネルにて実施しています。<br>下のボタンから投票所へ移動し、グランプリにふさわしいと思う1作品にリアクションしてください。</p>
+            <a href="https://discord.com/channels/951780348465909820/1401007865271156878" target="_blank" class="vote-btn">Discordの #ホルダー投票所 へ</a>
         </section>
     </main>
 
-    <!-- Modal for Video Viewing -->
+    <!-- Modalは変更なし -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">×</span>
