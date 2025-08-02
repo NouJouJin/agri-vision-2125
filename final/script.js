@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { newNo: 6, orgNo: 23, title: '宇宙農業-新たな進化の道へ-', creator: 'すみこ さん', videoId: 'vXadmCjHlxY', description: '22世紀、人類は食料生産の主舞台を地球から軌道上へと移した。...' }
     ];
 
-    // ★★★ スクリプトを全面的に書き換え ★★★
     const cardCarousel = document.getElementById('card-carousel');
     const modal = document.getElementById('modal');
     const modalPlayer = document.getElementById('modal-player-container');
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardCarousel.appendChild(card);
     });
     
-    // モーダル機能
+    // モーダル機能 (変更なし)
     function openModal(finalist) {
         modalPlayer.innerHTML = `<iframe src="https://www.youtube.com/embed/${finalist.videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         modalInfo.innerHTML = `
@@ -56,28 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
     });
 
-    // カルーセル（横スクロール）機能
-    const cardWidth = 330; // card width + gap
-    let scrollPosition = 0;
-
+    // ★★★ カルーセル（横スクロール）機能を修正 ★★★
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    const cardWidth = 330; // card width (300px) + gap (30px)
+    
     nextBtn.addEventListener('click', () => {
-        const maxScroll = cardCarousel.scrollWidth - cardCarousel.clientWidth;
-        scrollPosition += cardWidth;
-        if (scrollPosition > maxScroll) {
-            scrollPosition = maxScroll;
-        }
-        cardCarousel.parentElement.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        // 現在のスクロール位置にカード1枚分を追加してスクロール
+        carouselWrapper.scrollBy({ left: cardWidth, behavior: 'smooth' });
     });
 
     prevBtn.addEventListener('click', () => {
-        scrollPosition -= cardWidth;
-        if (scrollPosition < 0) {
-            scrollPosition = 0;
-        }
-        cardCarousel.parentElement.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        // 現在のスクロール位置からカード1枚分を引いてスクロール
+        carouselWrapper.scrollBy({ left: -cardWidth, behavior: 'smooth' });
     });
-
-    // オープニングアニメーション終了後にメインコンテンツを表示
+    
+    // オープニングアニメーション (変更なし)
     const mainContent = document.querySelector('.main-content');
     setTimeout(() => {
         mainContent.style.opacity = '1';
