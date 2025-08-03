@@ -36,67 +36,49 @@
 </head>
 <body>
 
-        <!-- ★★★ ここからが新規追加ヘッダー ★★★ -->
-    <header class="site-header">
+  <header class="site-header">
         <div class="header-container">
             <a href="https://metagri-labo.com/" target="_blank" class="logo-link">
                 <img src="http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png" alt="Metagri研究所 ロゴ" class="logo-image">
             </a>
-            <!-- ★★★ ボタンを「投票する」に変更 ★★★ -->
-            <a href="#vote" class="header-btn">作品に投票する</a>
+            <!-- ★★★ ボタンを「最終決戦へ」に変更 ★★★ -->
+            <a href="final/" class="header-btn">最終決戦へ</a>
         </div>
     </header>
 
    <header class="hero">
     <div class="hero-content">
         <h1 class="main-title">AGRI VISION 2125</h1>
-        <p class="subtitle">未来へ、一票を。コミュニティ投票、開催中！</p>
-        
-        <!-- ★★★ ここからが新規追加・修正箇所 ★★★ -->
-        <div class="hero-guide">
-            <div class="guide-step">
-                <span class="step-number">STEP 1</span>
-                <p class="step-text">未来ビジョンを視聴する</p>
-            </div>
-            <div class="guide-arrow">→</div>
-            <div class="guide-step">
-                <span class="step-number">STEP 2</span>
-                <p class="step-text">心に残った作品を最大3つ選ぶ</p>
-            </div>
-            <div class="guide-arrow">→</div>
-            <div class="guide-step">
-                <span class="step-number">STEP 3</span>
-                <p class="step-text">投票フォームから未来へ投票！</p>
-            </div>
-        </div>
-        
-        <a href="#vote" class="hero-vote-btn">今すぐ投票する</a>
-        <!-- ★★★ ここまでが新規追加・修正箇所 ★★★ -->
-
+        <!-- ★★★ サブタイトルを「投票終了」案内に変更 ★★★ -->
+        <p class="subtitle">投票、受付終了！</p>
+        <p class="description">
+            たくさんのご投票、誠にありがとうございました！<br>
+            コミュニティ投票で選ばれた珠玉の6作品による、最終決戦が始まります。
+        </p>
+        <!-- ★★★ ボタンを最終決戦LPへの誘導に変更 ★★★ -->
+        <a href="final/" class="hero-vote-btn">最終決戦の舞台へ</a>
     </div>
 </header>
     <main>
         <section class="gallery">
-            <h2 class="section-title">ENTRY WORKS</h2>
+            <h2 class="section-title">ALL 33 WORKS</h2>
             <div class="works-container" id="works-container">
                 <!-- 作品カードはJavaScriptによってここに挿入されます -->
             </div>
         </section>
 
-       <!-- ★★★ 応募セクションを投票セクションに差し替え ★★★ -->
+       <!-- ★★★ 投票セクションを「投票終了」案内に差し替え ★★★ -->
         <section id="vote" class="vote-section">
             <div class="vote-container">
-                <h2>未来へ、一票を。</h2>
-                <p>心に残った、未来の農業ビジョンはどれでしたか？<br>あなたの投票が、次の100年を創るクリエイターを応援します。</p>
-                <div class="vote-form-wrapper">
-                    <iframe class="airtable-embed" src="https://airtable.com/embed/applcqOMmwyE9fjtX/pag4I4C0JHYg0N3HY/form" frameborder="0" onmousewheel="" width="100%" height="950" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                <h2>たくさんのご投票、<br>ありがとうございました！</h2>
+                <p>
+                    皆様からいただいた貴重な一票をもとに、最終決戦に進出する6作品が決定いたしました。<br>
+                    グランプリ作品を決める最終投票は、NFTホルダー限定で実施中です。<br>
+                    結果発表をどうぞお楽しみに！
+                </p>
+                <div class="vote-link-wrapper">
+                    <a href="final/" class="vote-link-btn">最終決戦の様子を見る</a>
                 </div>
-             <!-- ★★★ ここからが新規追加箇所 ★★★ -->
-        <div class="vote-link-wrapper">
-            <p>もし上のフォームが表示されない場合は、<br class="sp-only">以下のボタンから投票ページに直接アクセスしてください。</p>
-            <a href="https://airtable.com/applcqOMmwyE9fjtX/pag4I4C0JHYg0N3HY/form" target="_blank" class="vote-link-btn">投票ページへ移動</a>
-        </div>
-        <!-- ★★★ ここまでが新規追加箇所 ★★★ -->
             </div>
         </section>
         
@@ -169,3 +151,4 @@
     </script>
 </body>
 </html>
+
