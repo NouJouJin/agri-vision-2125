@@ -8,7 +8,7 @@
     --font-main: 'Noto Sans JP', sans-serif;
     --font-title: 'Orbitron', sans-serif;
 }
-html { scroll-behavior: smooth; /* スムーズスクロールを有効に */ }
+html { scroll-behavior: smooth; }
 body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); margin: 0; line-height: 1.8; }
 #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
 .site-header { position: absolute; top: 20px; left: 20px; z-index: 1000; }
@@ -45,19 +45,51 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
 .prize-info { margin-top: 20px; background-color: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 8px; font-size: 0.9rem; }
 .prize-info p { margin: 0; }
 .prize-info small { opacity: 0.8; }
-/* ★★★ 各カード内の申請ボタンのスタイルを追加 ★★★ */
 .award-form-button { display: block; background: var(--accent-color); color: var(--bg-color); padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; margin-top: 20px; text-align: center; }
 .award-form-button:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-color); }
-
 /* Summary */
 .summary-section { text-align: center; max-width: 800px; margin: 0 auto 80px; }
 .summary-section p { margin-bottom: 20px; }
+
 /* ★★★ 申請フォームエリアのスタイルを全面的に改修 ★★★ */
-.application-section { text-align: center; }
-.application-description { margin-bottom: 40px; }
-.application-description small { display: block; margin-top: 10px; opacity: 0.8; }
-.form-container { margin-bottom: 50px; }
-.form-container h4 { font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 20px; }
+.application-section { 
+    text-align: center; 
+    background-color: var(--card-bg);
+    padding: 60px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+}
+.application-description { 
+    margin-bottom: 40px; 
+}
+.application-description small { 
+    display: block; margin-top: 10px; opacity: 0.8; 
+}
+.form-buttons-container { 
+    display: flex; flex-direction: column; align-items: center; gap: 25px; 
+}
+.form-button { 
+    display: inline-block; 
+    background-color: var(--accent-color); 
+    color: var(--bg-color); 
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 1rem; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    width: 80%;
+    max-width: 400px;
+}
+.form-button:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px var(--accent-color); 
+}
+.form-anchor {
+    padding-top: 80px; /* ヘッダーの高さ分を考慮して、ジャンプ位置を調整 */
+    margin-top: -80px;
+}
+
 /* Animation */
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
