@@ -606,3 +606,44 @@ body {
         font-size: 1.5rem; /* サブタイトルを少し小さく */
     }
 }
+
+/* --- Header & Hero Buttons Update --- */
+.header-buttons, .hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.header-btn.secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+.header-btn.secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.hero-vote-btn.secondary {
+    background-image: none;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    box-shadow: none;
+}
+.hero-vote-btn.secondary:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+.gallery-description {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    opacity: 0.8;
+}
+
+.final-nav {
+    border-top: 1px solid var(--border-color);
+}
