@@ -8,6 +8,7 @@
     --font-main: 'Noto Sans JP', sans-serif;
     --font-title: 'Orbitron', sans-serif;
 }
+html { scroll-behavior: smooth; /* スムーズスクロールを有効に */ }
 body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); margin: 0; line-height: 1.8; }
 #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
 .site-header { position: absolute; top: 20px; left: 20px; z-index: 1000; }
@@ -23,10 +24,8 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
 .stat-item { text-align: center; }
 .stat-number, .stat-text { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--accent-color); }
 .stat-label { font-size: 1rem; opacity: 0.8; }
-/* ★★★ 開催期間用のスタイルを追加 ★★★ */
 .stat-text-small { font-family: var(--font-title); font-size: 1.2rem; color: #fff; }
 .stat-label-small { font-size: 1rem; opacity: 0.8; }
-
 /* Awards */
 .awards-section { margin-bottom: 80px; }
 .award-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
@@ -39,23 +38,26 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
 .award-body { padding: 30px; }
 .work-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
 .creator-name { font-size: 1rem; opacity: 0.9; margin-bottom: 20px; }
+.video-embed-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 8px; }
+.video-embed-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .work-description { font-size: 0.95rem; }
 .reason { margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border-color); opacity: 0.9; font-size: 0.9rem; }
-/* ★★★ 動画埋め込み用のスタイルを追加 ★★★ */
-.video-embed-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 8px; }
-.video-embed-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-/* ★★★ 副賞表示用のスタイルを追加 ★★★ */
 .prize-info { margin-top: 20px; background-color: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 8px; font-size: 0.9rem; }
 .prize-info p { margin: 0; }
+.prize-info small { opacity: 0.8; }
+/* ★★★ 各カード内の申請ボタンのスタイルを追加 ★★★ */
+.award-form-button { display: block; background: var(--accent-color); color: var(--bg-color); padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; margin-top: 20px; text-align: center; }
+.award-form-button:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-color); }
 
-/* Summary & Application (変更なし) */
+/* Summary */
 .summary-section { text-align: center; max-width: 800px; margin: 0 auto 80px; }
 .summary-section p { margin-bottom: 20px; }
+/* ★★★ 申請フォームエリアのスタイルを全面的に改修 ★★★ */
 .application-section { text-align: center; }
-.application-description { margin-bottom: 30px; }
-.form-buttons-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-.form-button { display: inline-block; background: var(--accent-color); color: var(--bg-color); padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; min-width: 300px; }
-.form-button:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-color); }
+.application-description { margin-bottom: 40px; }
+.application-description small { display: block; margin-top: 10px; opacity: 0.8; }
+.form-container { margin-bottom: 50px; }
+.form-container h4 { font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 20px; }
 /* Animation */
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
