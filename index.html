@@ -36,48 +36,52 @@
 </head>
 <body>
 
-  <header class="site-header">
+ <header class="site-header">
         <div class="header-container">
             <a href="https://metagri-labo.com/" target="_blank" class="logo-link">
                 <img src="http://metagri-labo.com/wp-content/uploads/2024/07/e32fab8e2b2e9930531e7f8edffab72b.png" alt="Metagri研究所 ロゴ" class="logo-image">
             </a>
-            <!-- ★★★ ボタンを「最終決戦へ」に変更 ★★★ -->
-            <a href="final/" class="header-btn">最終決戦へ</a>
+            <!-- ★★★ ヘッダーボタンを2つに増設 ★★★ -->
+            <div class="header-buttons">
+                <a href="final/" class="header-btn secondary">最終決戦</a>
+                <a href="results/" class="header-btn primary">結果発表</a>
+            </div>
         </div>
     </header>
 
-   <header class="hero">
+    <header class="hero">
     <div class="hero-content">
         <h1 class="main-title">AGRI VISION 2125</h1>
-        <!-- ★★★ サブタイトルを「投票終了」案内に変更 ★★★ -->
-        <p class="subtitle">投票、受付終了！</p>
+        <!-- ★★★ サブタイトルと説明文を更新 ★★★ -->
+        <p class="subtitle">全日程、終了！</p>
         <p class="description">
-            たくさんのご投票、誠にありがとうございました！<br>
-            コミュニティ投票で選ばれた珠玉の6作品による、最終決戦が始まります。
+            業界初の動画AIコンテストは、全33作品の応募、白熱の投票を経て、ついにグランプリが決定いたしました。<br>
+            ご参加・ご投票いただいた全ての皆様に、心より感謝申し上げます。
         </p>
-        <!-- ★★★ ボタンを最終決戦LPへの誘導に変更 ★★★ -->
-        <a href="final/" class="hero-vote-btn">最終決戦の舞台へ</a>
+        <!-- ★★★ ボタンを2つに増設 ★★★ -->
+        <div class="hero-buttons">
+            <a href="final/" class="hero-vote-btn secondary">最終決戦の軌跡を見る</a>
+            <a href="results/" class="hero-vote-btn primary">受賞結果を見る</a>
+        </div>
     </div>
 </header>
     <main>
         <section class="gallery">
+            <!-- ★★★ 見出しを更新 ★★★ -->
             <h2 class="section-title">ALL 33 WORKS</h2>
+             <p class="gallery-description">コンテストに応募された、全33の未来ビジョンをご覧ください。</p>
             <div class="works-container" id="works-container">
                 <!-- 作品カードはJavaScriptによってここに挿入されます -->
             </div>
         </section>
 
-       <!-- ★★★ 投票セクションを「投票終了」案内に差し替え ★★★ -->
-        <section id="vote" class="vote-section">
-            <div class="vote-container">
-                <h2>たくさんのご投票、<br>ありがとうございました！</h2>
-                <p>
-                    皆様からいただいた貴重な一票をもとに、最終決戦に進出する6作品が決定いたしました。<br>
-                    グランプリ作品を決める最終投票は、NFTホルダー限定で実施中です。<br>
-                    結果発表をどうぞお楽しみに！
-                </p>
-                <div class="vote-link-wrapper">
-                    <a href="final/" class="vote-link-btn">最終決戦の様子を見る</a>
+        <!-- ★★★ 投票セクションをフッター直前のナビゲーションに変更 ★★★ -->
+        <section id="vote" class="vote-section final-nav">
+             <div class="vote-container">
+                <h2>未来への旅は、まだ終わらない。</h2>
+                <div class="hero-buttons">
+                    <a href="final/" class="hero-vote-btn secondary">最終決戦の軌跡を見る</a>
+                    <a href="results/" class="hero-vote-btn primary">受賞結果を見る</a>
                 </div>
             </div>
         </section>
@@ -151,4 +155,5 @@
     </script>
 </body>
 </html>
+
 
