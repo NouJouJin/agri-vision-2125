@@ -19,26 +19,38 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
 .main-title { font-family: var(--font-title); font-size: 3.5rem; font-weight: 900; color: #fff; margin: 0; }
 .subtitle { font-family: var(--font-title); font-size: 2rem; color: var(--gold-color); text-shadow: 0 0 15px var(--gold-color); margin: 10px 0; }
 .description { font-size: 1.1rem; opacity: 0.9; margin-top: 10px; }
-.stats-container { display: flex; justify-content: center; gap: 40px; margin-top: 40px; }
+.stats-container { display: flex; justify-content: center; gap: 40px; margin-top: 40px; align-items: center; }
 .stat-item { text-align: center; }
 .stat-number, .stat-text { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--accent-color); }
 .stat-label { font-size: 1rem; opacity: 0.8; }
+/* ★★★ 開催期間用のスタイルを追加 ★★★ */
+.stat-text-small { font-family: var(--font-title); font-size: 1.2rem; color: #fff; }
+.stat-label-small { font-size: 1rem; opacity: 0.8; }
+
 /* Awards */
 .awards-section { margin-bottom: 80px; }
-.award-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.3s, box-shadow 0.3s; }
+.award-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
 .award-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0, 245, 212, 0.2); }
 .award-header { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid var(--border-color); }
 .award-icon { font-size: 2rem; margin-right: 15px; }
 .award-title { font-family: var(--font-title); font-size: 1.8rem; margin: 0; }
+.grand-prize { border-color: var(--gold-color); box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
 .grand-prize .award-title { color: var(--gold-color); }
 .award-body { padding: 30px; }
 .work-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
 .creator-name { font-size: 1rem; opacity: 0.9; margin-bottom: 20px; }
+.work-description { font-size: 0.95rem; }
 .reason { margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border-color); opacity: 0.9; font-size: 0.9rem; }
-/* Summary */
+/* ★★★ 動画埋め込み用のスタイルを追加 ★★★ */
+.video-embed-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 8px; }
+.video-embed-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+/* ★★★ 副賞表示用のスタイルを追加 ★★★ */
+.prize-info { margin-top: 20px; background-color: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 8px; font-size: 0.9rem; }
+.prize-info p { margin: 0; }
+
+/* Summary & Application (変更なし) */
 .summary-section { text-align: center; max-width: 800px; margin: 0 auto 80px; }
 .summary-section p { margin-bottom: 20px; }
-/* Application Forms */
 .application-section { text-align: center; }
 .application-description { margin-bottom: 30px; }
 .form-buttons-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
