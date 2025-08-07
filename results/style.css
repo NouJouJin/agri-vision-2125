@@ -206,3 +206,22 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
         grid-template-columns: 1fr; /* スマホでは縦並び */
     }
 }
+
+/* --- Application Note Section --- */
+.application-note-section {
+    text-align: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 80px;
+}
+.note-title {
+    font-family: var(--font-title);
+    color: var(--gold-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.application-note-section p {
+    margin: 10px 0 0 0;
+}
