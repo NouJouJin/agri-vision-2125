@@ -49,4 +49,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+});
+
+// --- BGM Control ---
+document.addEventListener('DOMContentLoaded', () => {
+    const bgmPlayer = document.getElementById('bgm-player');
+    const bgmButton = document.getElementById('bgm-button');
+    let isPlaying = false;
+
+    // ユーザーの最初の操作で再生を開始する関数
+    function startMusic() {
+        if (!isPlaying) {
+            bgmPlayer.volume = 0.2; // 初期の音量を小さめに設定
+            bgmPlayer.play().then(() => {
+                isPlaying = true;
+                bgmButton.textContent = '🔊';
+                // 一度再生を開始したら、このイベントリスナーは不要なので削除
+                document.body.removeEventListener('click', startMusic);
+                document.body.removeEventListener('scroll', startMusic);
+            }).catch(error => {
+                console.log("Autoplay was prevented. Waiting for user interaction.");
+            });
+        }
+    }
+    
+    // 多くのブラウザでは自動再生がブロックされるため、ユーザーがクリックかスクロールしたら再生を開始
+    document.body.addEventListener('click', startMusic);
+    document.body.addEventListener('scroll', startMusic, { once: true });
+
+
+    // ボタンで再生/停止を切り替え
+    bgmButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // ページの他の部分へのクリックイベント伝播を停止
+        if (isPlaying) {
+            bgmPlayer.pause();
+            bgmButton.textContent = '🔇';
+        } else {
+            bgmPlayer.play();
+            bgmButton.textContent = '🔊';
+        }
+        isPlaying = !isPlaying;
+    });
 });
