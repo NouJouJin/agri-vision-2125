@@ -12,6 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+     <!-- ★★★ このブロックを<body>の直後に追加 ★★★ -->
+    <audio id="bgm-player" loop>
+        <source src="hikari_no_tane.mp3" type="audio/mpeg">
+        お使いのブラウザはオーディオ再生に対応していません。
+    </audio>
+    <div id="bgm-controller">
+        <button id="bgm-button">🔊</button>
+    </div>
+    <!-- ★★★ ここまで ★★★ -->
+    
     <div id="particles-js"></div>
     <header class="site-header">
         <a href="https://metagri-labo.com/" target="_blank" class="logo-link">
@@ -289,6 +300,7 @@
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
 </html>
+
 
 
 
