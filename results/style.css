@@ -225,3 +225,30 @@ body { background-color: var(--bg-color); color: var(--text-color); font-family:
 .application-note-section p {
     margin: 10px 0 0 0;
 }
+
+/* --- BGM Controller Style --- */
+#bgm-controller {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#bgm-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#bgm-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
